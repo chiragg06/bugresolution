@@ -1,0 +1,74 @@
+<template>
+    <div class="main-container" style={backgroundStyle}>
+        
+        <div class="glass-panel">
+            
+            <div class="header-section">
+                <div class="avatar-container">
+                    <img src={userAvatar} alt="User Avatar" class="avatar" />
+                </div>
+                <h1 class="welcome-text">Welcome, {userName}</h1>
+                <p class="sub-text">Select your work item details below</p>
+            </div>
+
+            <div class="form-container">
+                <lightning-combobox
+                    name="project"
+                    class="custom-combobox"
+                    label="Select Project/Team"
+                    value={selectedProject}
+                    options={projects}
+                    onchange={handleProjectChange}
+                    placeholder="Choose a Project"
+                ></lightning-combobox>
+
+                <template if:true={selectedProject}>
+                    <lightning-combobox
+                        name="board"
+                        class="custom-combobox"
+                        label="Select Board"
+                        value={selectedBoard}
+                        options={boards}
+                        onchange={handleBoardChange}
+                        placeholder="Choose a Board"
+                    ></lightning-combobox>
+                </template>
+
+                <template if:true={selectedBoard}>
+                    <lightning-combobox
+                        name="sprint"
+                        class="custom-combobox"
+                        label="Select Sprint"
+                        value={selectedSprint}
+                        options={sprints}
+                        onchange={handleSprintChange}
+                        placeholder="Choose a Sprint"
+                    ></lightning-combobox>
+                </template>
+
+                <template if:true={selectedSprint}>
+                    <lightning-combobox
+                        name="bug"
+                        class="custom-combobox"
+                        label="Select Bug"
+                        value={selectedBugId}
+                        options={bugs}
+                        onchange={handleBugChange}
+                        placeholder="Choose a Bug"
+                    ></lightning-combobox>
+                </template>
+                
+                <div class="button-container">
+                    <button class="action-btn" onclick={handleNext} disabled={nextDisabled}>
+                        NEXT
+                    </button>
+                </div>
+            </div>
+
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+            </template>
+        </div>
+
+    </div>
+</template>
