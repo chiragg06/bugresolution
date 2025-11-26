@@ -1,0 +1,84 @@
+<template>
+    <div class="background-container" style={backgroundStyle}>
+
+        <h1 class="main-title">Select a Component to Resolve</h1>
+
+        <!-- SPINNER WHILE LOADING METADATA -->
+        <template if:true={showTypeSpinner}>
+            <div class="center-spinner">
+                <lightning-spinner size="medium" alternative-text="Loading..."></lightning-spinner>
+            </div>
+        </template>
+
+        <!-- MAIN UI -->
+        <template if:false={showTypeSpinner}>
+            <div class="toggle-container">
+                <button class={manualTabClass} data-tab="manual" onclick={handleTabSwitch}>
+                    Select Components Manually
+                </button>
+            </div>
+
+            <div class="glass-card">
+                
+                <label class="card-label">Select your component</label>
+
+                <div class="input-row">
+                    <!-- TYPE DROPDOWN -->
+                    <div class="type-dropdown">
+                        <lightning-combobox
+                            name="componentType"
+                            label="Type"
+                            variant="label-hidden" 
+                            value={selectedType}
+                            placeholder="Select"
+                            options={allMetadataTypes}
+                            onchange={handleTypeDropdownChange}>
+                        </lightning-combobox>
+                    </div>
+
+                    <!-- TYPEAHEAD (RESETTABLE) -->
+                    <div class="search-wrapper">
+                        <template if:true={showTypeAheadComponent}>
+                            <c-type-ahead-component
+                                key={typeAheadKey}
+                                label="Search"
+                                options={recordOptions}
+                                icon-name="standard:search"
+                                place-holder="Search"
+                                show-spinner={showSpinner}
+                                oninputchange={handleRecordChange}
+                                onselect={handleSelectEvent}
+                                onremove={handleRemoveEvent}
+                                is-disabled={isDisabled}
+                                is-required="false">
+                            </c-type-ahead-component>
+                        </template>
+                    </div>
+
+                    <!-- ADD BUTTON -->
+                    <button class="add-btn" onclick={handleAddClick} disabled={isAddDisabled}>Add</button>
+                </div>
+
+                <!-- SELECTED COMPONENTS LIST -->
+                <template if:true={hasAnySelection}>
+                    <div class="selections-container">
+                        <template for:each={groupedSelections} for:item="group">
+                            <div key={group.type} class="group-section">
+                                <div class="group-label">{group.label}</div>
+                                <div class="pills-wrapper">
+                                    <template for:each={group.items} for:item="item">
+                                        <div key={item.uniqueKey} class="teal-pill">
+                                            <span class="pill-text">{item.name}</span>
+                                            <button class="pill-remove" data-type={item.type} data-name={item.name} onclick={handleRemovePill}>✕</button>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+            </div>
+        </template>
+    </div>
+</template>

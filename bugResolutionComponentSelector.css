@@ -1,0 +1,178 @@
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+:host {
+    display: block;
+}
+
+.background-container {
+    /* Image handled by JS now */
+    padding: 2rem;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Ensure full width */
+}
+
+/* Header Text */
+.main-title {
+    color: white;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Toggle Buttons */
+.toggle-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 2rem;
+    padding: 0.25rem;
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.toggle-btn {
+    border: none;
+    background: transparent;
+    padding: 0.5rem 1.5rem;
+    border-radius: 1.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #516d8d;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn.active {
+    background-color: #107e77; /* Dark Teal */
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Glass Card */
+.glass-card {
+    background: rgba(22, 32, 50, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-label {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* Input Row */
+.input-row {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+}
+
+.type-dropdown {
+    width: 200px;
+    flex-shrink: 0;
+    --sds-c-combobox-color-background: #ffffff;
+    --slds-c-combobox-text-color: #181818;
+}
+
+.search-wrapper {
+    flex-grow: 1;
+}
+
+.add-btn {
+    background-color: #4b6a79; /* Default state */
+    color: white;
+    border: none;
+    padding: 0 2rem;
+    height: 32px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 1px;
+}
+
+.add-btn:not(:disabled) {
+    background-color: #4b6a79; /* Make sure it's visible */
+}
+
+.add-btn:hover:not(:disabled) {
+    background-color: #3b5563;
+}
+
+.add-btn:disabled {
+    background-color: #5c7c85;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Force white labels inside the dark card */
+.input-row lightning-combobox,
+.input-row c-type-ahead-component {
+    --lwc-colorTextLabel: #ffffff;
+}
+
+/* Pills */
+.selections-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.group-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.group-label {
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.pills-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.teal-pill {
+    background-color: #1abac3;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.pill-text { pointer-events: none; }
+
+.pill-remove {
+    background: transparent;
+    border: none;
+    color: #ffcccc;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 2px;
+}

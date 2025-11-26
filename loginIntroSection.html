@@ -1,0 +1,47 @@
+<template>
+    <div class="login-container">
+        
+        <template if:true={loading}>
+            <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+        </template>
+
+        <template if:false={isLoggedIn}>
+            <div class="content-wrapper">
+                
+                <h1 class="headline">AI-powered, context-aware bug resolutions—instantly.</h1>
+                <p class="subhead">Log in with any account to continue</p>
+
+                <template if:true={errorText}>
+                    <div class="slds-text-color_error slds-m-bottom_medium">{errorText}</div>
+                </template>
+
+                <div class="button-group">
+                    
+                    <button class="login-btn" onclick={handleJiraLogin} disabled={loading}>
+                        <lightning-icon icon-name="utility:link" size="small" class="btn-icon"></lightning-icon>
+                        <span class="btn-text">JIRA</span>
+                    </button>
+
+                    <button class="login-btn" onclick={handleAzureDevopsLogin} disabled={loading}>
+                        <lightning-icon icon-name="utility:cloud_hub" size="small" class="btn-icon"></lightning-icon>
+                        <span class="btn-text">AZURE DEVOPS</span>
+                    </button>
+
+                    <button class="login-btn" onclick={handleNotionLogin} disabled={loading}>
+                        <lightning-icon icon-name="utility:note" size="small" class="btn-icon"></lightning-icon>
+                        <span class="btn-text">NOTION</span>
+                    </button>
+
+                </div>
+            </div>
+        </template>
+        <template if:true={isLoggedIn}>
+            <div class="slds-m-around_medium slds-text-align_center">
+                <lightning-icon icon-name="utility:success" size="large" variant="success" class="success-icon"></lightning-icon>
+                <h2 class="slds-text-heading_medium slds-m-top_small" style="color: white">
+                    Login Successful!
+                </h2>
+            </div>
+        </template>
+    </div>
+</template>

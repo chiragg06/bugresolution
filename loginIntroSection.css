@@ -1,0 +1,141 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.login-container {
+    position: relative;
+    width: 100%;
+    /* Ensure enough height to show the bg and center content nicely */
+    min-height: 600px; 
+    padding: 80px 20px;
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Flex centering */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* --- Typography --- */
+.headline {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.subhead {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #E0E0E0; /* Slightly off-white for subtext */
+    margin-bottom: 50px;
+}
+
+/* --- Button Group --- */
+.button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 30px; /* Space between buttons */
+    flex-wrap: wrap; /* Allows stacking on small screens */
+    justify-content: center;
+}
+
+/* --- Individual Buttons --- */
+.login-btn {
+    /* Exact dimensions from design */
+    width: 273px;
+    height: 52px;
+    border-radius: 25px;
+    border: none;
+    
+    /* Gradient from design */
+    background: linear-gradient(90deg, #06BEB6 0%, #217884 100%);
+    
+    /* Flex layout for Icon + Text centering */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+    cursor: pointer;
+    transition: transform 0.1s ease, opacity 0.2s ease;
+}
+
+.login-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+.login-btn:active {
+    transform: scale(0.98);
+}
+
+/* Button Text & Icon Styling (Dark color based on screenshot) */
+.btn-text {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #153034; /* Dark teal color matching the end of the gradient */
+    text-transform: uppercase;
+}
+
+/* Target the lightning-icon to color the SVG dark */
+.btn-icon {
+    --sds-c-icon-color-foreground-default: #153034;
+}
+
+/* --- Mobile Responsiveness --- */
+@media screen and (max-width: 768px) {
+    .headline {
+        font-size: 32px;
+    }
+    
+    .button-group {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 20px;
+    }
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full height for centered loading */
+}
+
+.round-loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 16px; /* Space below the loader */
+}
+
+.countdown-text {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
