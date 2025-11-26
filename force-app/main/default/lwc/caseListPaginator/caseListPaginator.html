@@ -1,0 +1,11 @@
+<template>
+  <div class="pager" role="navigation" aria-label="Pagination">
+    <lightning-button-group>
+      <lightning-button label="⏮ First" onclick={goFirst} disabled={isFirst}></lightning-button>
+      <lightning-button label="◀ Prev"  onclick={goPrev}  disabled={isFirst}></lightning-button>
+      <lightning-button label="Next ▶"  onclick={goNext}  disabled={isLast}></lightning-button>
+      <lightning-button label="Last ⏭" onclick={goLast}  disabled={isLast}></lightning-button>
+    </lightning-button-group>
+    <span class="page">Page {pageNumber} / {totalPages}</span>
+  </div>
+</template>

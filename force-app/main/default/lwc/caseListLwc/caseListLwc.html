@@ -1,0 +1,26 @@
+<template>
+  <div class="wrap" role="region" aria-label="Case list view">
+    <div class="toolbar">
+      <lightning-input type="search" label="Search cases" value={searchText}
+                       onchange={onSearchChange} placeholder="Search subject or case number">
+      </lightning-input>
+      <lightning-button variant="brand" label="Search" onclick={runSearch}></lightning-button>
+    </div>
+
+    <lightning-datatable key-field="Id"
+                         data={rows}
+                         columns={columns}
+                         hide-checkbox-column
+                         show-row-number-column>
+    </lightning-datatable>
+
+    <c-case-list-paginator page-number={pageNumber}
+                           total-pages={totalPages}
+                           onnav={onNav}>
+    </c-case-list-paginator>
+
+    <template if:true={toastText}>
+      <div class="screen-reader-only" aria-live="polite">{toastText}</div>
+    </template>
+  </div>
+</template>
