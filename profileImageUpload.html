@@ -1,0 +1,23 @@
+<template>
+    <div class="profile-container">
+        <h2>Profile Settings</h2>
+
+        <lightning-input
+            type="file"
+            label="Upload Profile Image"
+            accept="image/*"
+            onchange={handleFileChange}>
+        </lightning-input>
+
+        <lightning-button
+            label="Upload Image"
+            variant="brand"
+            onclick={handleUpload}
+            class="upload-btn">
+        </lightning-button>
+
+        <template if:true={errorMessage}>
+            <p class="error-text">{errorMessage}</p>
+        </template>
+    </div>
+</template>
