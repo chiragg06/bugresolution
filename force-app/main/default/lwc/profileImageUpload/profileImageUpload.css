@@ -1,0 +1,14 @@
+.profile-container {
+    max-width: 400px;
+    padding: 16px;
+}
+
+.upload-btn {
+    margin-top: 12px;
+}
+
+.error-text {
+    margin-top: 12px;
+    color: red;
+    font-weight: 600;
+}
